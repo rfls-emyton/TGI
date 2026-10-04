@@ -1,0 +1,54 @@
+{
+  "id": "TGI-USER-ACCEPTANCE-FRAME-V1",
+  "created_utc": "2026-09-21T21:36:34.160894+00:00",
+  "authority": "User acceptance package supplied during active task",
+  "experiences": [
+    {
+      "source_id": "experience-A",
+      "text": "SISTEM TGI AMAN DARI HALUSINASI",
+      "anchor": 3,
+      "start_coordinate": [
+        2,
+        1,
+        0,
+        3,
+        5
+      ]
+    },
+    {
+      "source_id": "experience-B",
+      "text": "SISTEM REAKTOR NUKLIR MEMBUTUHKAN PENDINGIN",
+      "anchor": 8,
+      "start_coordinate": [
+        2,
+        1,
+        0,
+        8,
+        2
+      ]
+    }
+  ],
+  "queries": [
+    {
+      "trigger": "S",
+      "anchor": 3,
+      "expected": "SISTEM TGI AMAN DARI HALUSINASI"
+    },
+    {
+      "trigger": "S",
+      "anchor": 8,
+      "expected": "SISTEM REAKTOR NUKLIR MEMBUTUHKAN PENDINGIN"
+    },
+    {
+      "trigger": "S",
+      "anchor": 9,
+      "expected": null
+    }
+  ],
+  "criteria": [
+    "exact NMU reconstruction of both complete frames",
+    "no cross-anchor traversal",
+    "unknown anchor returns NULL without a generated answer"
+  ],
+  "causal_interpretation": "Receive complete frame before assigning final context address and locking its initial node. No suffix information is available at initial S."
+}

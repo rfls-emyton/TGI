@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+recursive-include tgi *.py
+recursive-include tests *.py
+recursive-include contracts *.json
+recursive-include examples *.jsonl
+recursive-include paper/technical *.md *.json
+recursive-include output/pdf *.pdf

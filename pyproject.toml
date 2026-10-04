@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tgi-foundation"
+version = "0.2.0.dev0"
+description = "Native character-identity and geometric knowledge mechanisms for Topological Geometric Intelligence"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+authors = [{name = "Emylton Leunufna"}]
+license = {file = "LICENSE"}
+keywords = ["topological geometric intelligence", "TGI", "NMU", "crystal memory"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[tool.setuptools.packages.find]
+include = ["tgi*"]

@@ -1,0 +1,64 @@
+{
+  "revision": "TGI-PAPER-SERIES-V1",
+  "author": "Emylton Leunufna",
+  "papers": [
+    {
+      "name": "TGI_TOPOLOGICAL_GEOMETRIC_INTELLIGENCE",
+      "title": "TGI: Topological Geometric Intelligence",
+      "source_sha256": "5288fac753e62582cbdec071d1634371ca3c3662b3b25920194cdd5b82e189ed",
+      "pdf_sha256": "250aa39f15192ec5cf54dbaf94c999fb9dbc2b46df5a5de0ae42f41550348f4b",
+      "words": 1569,
+      "pages": 3,
+      "local_references_checked": 15
+    },
+    {
+      "name": "CHARACTER_IDENTITY_AND_LATTICE",
+      "title": "Character Identity and Discrete Crystal-Lattice Addressing in Topological Geometric Intelligence",
+      "source_sha256": "7f5a3bf2aec5c4a40e5cb7314ef64153512d29266194061baa0571b3db8b92de",
+      "pdf_sha256": "5062e225b1e94c0f69404e49cfb71b72c762b7c81ae6a939b6d505b52f6dbae2",
+      "words": 1871,
+      "pages": 4,
+      "local_references_checked": 13
+    },
+    {
+      "name": "BAND_OWNED_PHASE_AND_ORGANIZATION",
+      "title": "Band-Owned Phase Formation and Source-Valid Organization in TGI",
+      "source_sha256": "9548bb5df8aadf8e3d8db970a1e6dc22f1b973764d02d30e0782e35b4617dee3",
+      "pdf_sha256": "59614ef4b14f10e69f65121b6ff77e5a356e34171aca74b7b5aeddda0e68f0c5",
+      "words": 1677,
+      "pages": 4,
+      "local_references_checked": 15
+    },
+    {
+      "name": "INTERVENTIONAL_SPATIAL_RELATIONS",
+      "title": "Interventional Formation and Fracture of Spatial Referent Classes in TGI",
+      "source_sha256": "eb7bbb4dde8d0cdfaa46b80f127ac858df40381b853de36fd2cc6e1d74d4ee5e",
+      "pdf_sha256": "8a4d5bb9f5763bb78fe7fc290c9ae0fead1b702a89aa8ff6deb87c7ddc099622",
+      "words": 1894,
+      "pages": 4,
+      "local_references_checked": 17
+    },
+    {
+      "name": "DETERMINISTIC_RESOLUTION_AND_CONTINUAL_LEARNING",
+      "title": "Deterministic Resolution and Continual Knowledge Revision from Raw TGI Experience",
+      "source_sha256": "7b1852e760e43388049af37abcc169ae3bcbce49d5d6fe34f1a656c0785dd5d4",
+      "pdf_sha256": "98785dff95b4bf044973a71ff04d810e9efd36e59aef12ab8714e39c40c3a24f",
+      "words": 1973,
+      "pages": 4,
+      "local_references_checked": 11
+    },
+    {
+      "name": "OWNED_SPATIAL_EXECUTION",
+      "title": "Owned Spatial Execution and Reproducible Scale Measurement for Native TGI",
+      "source_sha256": "443ab2a4aca9f978aa053695333e38fad146921b7b120e49fe2cde92382d460d",
+      "pdf_sha256": "2a5afe81a42b6eadbaa92466bb6e7c6f5de65f5147a76f1be8371609fd24bc6f",
+      "words": 1698,
+      "pages": 4,
+      "local_references_checked": 10
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "evidence_bundle_sha256": "c1c721b35b05b5d4d2a637a996f8a5ef75671a5f77a18272697dae3461940817",
+  "renderer_sha256": "4e519f9d648932600b7bb57f64cc88ee71b2b34ebeeebccf0d5259455025f788"
+}
