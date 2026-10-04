@@ -21,5 +21,9 @@ classifiers = [
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 
+[project.urls]
+Homepage = "https://github.com/rfls-emyton/TGI"
+Source = "https://github.com/rfls-emyton/TGI"
+
 [tool.setuptools.packages.find]
 include = ["tgi*"]
