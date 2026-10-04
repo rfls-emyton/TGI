@@ -239,10 +239,12 @@ release.
 
 [1] `KONSEP.txt` and `contracts/M1_INTERVENTION_CORRESPONDENCE_RESEARCH_V1.md`.
 
-[2] E. Leunufna, *NMU: One Character, One Identity*, revision V2, 2026.
+[2] E. Leunufna, *NMU: One Character, One Identity*, revision V2, 2026,
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341318.
 
 [3] E. Leunufna, *Crystal Memory for Native Character-Identity Streams*,
-revision V3, 2026.
+revision V3, 2026,
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7355679.
 
 [4] `evidence/m1_signed_three_port_v2_audit/terminal_receipt.json`.
 

@@ -260,10 +260,13 @@ release.
 
 [7] `evidence/source_distribution_20261004T084916022662Z/result.json`.
 
-[8] E. Leunufna, *NMU: One Character, One Identity*, revision V2, 2026.
+[8] E. Leunufna, *NMU: One Character, One Identity*, revision V2, 2026,
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341318.
 
 [9] E. Leunufna, *Emylton: A Falsifiable Native Crystallization-State Chain*,
-revision V2, 2026.
+revision V2, 2026,
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7345360.
 
 [10] E. Leunufna, *Crystal Memory for Native Character-Identity Streams*,
-revision V3, 2026.
+revision V3, 2026,
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7355679.

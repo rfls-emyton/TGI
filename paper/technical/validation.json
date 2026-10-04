@@ -6,7 +6,7 @@
       "name": "TGI_TOPOLOGICAL_GEOMETRIC_INTELLIGENCE",
       "title": "TGI: Topological Geometric Intelligence",
       "source_sha256": "38b0f1bd170ef1a0483fa1a03a9a0716a35e4560e52c806a74e8b161febefcc8",
-      "pdf_sha256": "e196ec9912eb150ca4a4faa032bd7ed34ad65997b180cb64699ca92a75032a77",
+      "pdf_sha256": "d54116e16a6e8e93e6bb874aef8e837b37f6d8b91a19b394d2598e1063d00d4d",
       "words": 1662,
       "pages": 4,
       "local_references_checked": 12
@@ -15,7 +15,7 @@
       "name": "CHARACTER_IDENTITY_AND_LATTICE",
       "title": "Character Identity and Discrete Crystal-Lattice Addressing in Topological Geometric Intelligence",
       "source_sha256": "ddaca0dcc4e5849cdb609fca6c09159e21ee3c5ab70d40764343994d4916ec3f",
-      "pdf_sha256": "250ff07a45a40e823df7aa8803281b5e50bf0bc5fcbdff268986be60aed9c0f2",
+      "pdf_sha256": "890a17b1ce1f6668c30228254f04e0ed3202c294e0c945ecb5747dea9d961973",
       "words": 1964,
       "pages": 4,
       "local_references_checked": 11
@@ -24,7 +24,7 @@
       "name": "BAND_OWNED_PHASE_AND_ORGANIZATION",
       "title": "Band-Owned Phase Formation and Source-Valid Organization in TGI",
       "source_sha256": "dc10139acfedcca077dafdbc1ee4d8967f5a505d7893c579497ec72e6f18f190",
-      "pdf_sha256": "ea29afd5803594ad3021cd7fe6bd95339cf5b953ababece1289df094819aaf40",
+      "pdf_sha256": "b63907da05065ea074bc572405a0a11e8a55e7bfb97b0600278e19dbaac30363",
       "words": 1770,
       "pages": 4,
       "local_references_checked": 12
@@ -32,26 +32,26 @@
     {
       "name": "INTERVENTIONAL_SPATIAL_RELATIONS",
       "title": "Interventional Formation and Fracture of Spatial Referent Classes in TGI",
-      "source_sha256": "3613223d16e29a5f8f9149fcf7def63806fd6681f0d325feb0ea16954f8c0870",
-      "pdf_sha256": "3299b9a3c582956e3039aa76bc143f48f8cba372b3509a6314c185fed410a5c7",
-      "words": 1987,
+      "source_sha256": "48c3a93bd46ae1d5f1c210654c64f377acf9199289f08c30ae3dd91b5183107e",
+      "pdf_sha256": "d1a1316945b862a273e5e0428f169d0946dca3ac6e4b4e06403b1d132227db37",
+      "words": 1989,
       "pages": 4,
       "local_references_checked": 18
     },
     {
       "name": "DETERMINISTIC_RESOLUTION_AND_CONTINUAL_LEARNING",
       "title": "Deterministic Resolution and Continual Knowledge Revision from Raw TGI Experience",
-      "source_sha256": "1bef88f6f2c7204f3450b7413fc22b2be6516c0cc5722fe759978b8aca8a362a",
-      "pdf_sha256": "06c64c6b2fbba5114e4183b7db1fa33fbb3de9785de76ecc762c818cc98b582d",
-      "words": 2066,
-      "pages": 4,
+      "source_sha256": "c7bf466f73d84d4a30b49fecccc321362ff4e807edd08f0233e11932fc34b17c",
+      "pdf_sha256": "cddcbd51020c0f97f5952494c1ee950d1110786554a0183be7b1fd59ed03acde",
+      "words": 2069,
+      "pages": 5,
       "local_references_checked": 12
     },
     {
       "name": "OWNED_SPATIAL_EXECUTION",
       "title": "Owned Spatial Execution and Reproducible Scale Measurement for Native TGI",
       "source_sha256": "a0e863f08b03ed811cf9fab6e8113b7dcc164d6bd878a730a13e51720a625be6",
-      "pdf_sha256": "ece46027482189d72738119754eaea0f777f96e34b73840204159344be359ddd",
+      "pdf_sha256": "853b334abb01be2958b55d29af5812e1f28c5bc6fd08feca84192789bd71fbf1",
       "words": 1791,
       "pages": 4,
       "local_references_checked": 10
@@ -60,5 +60,5 @@
   "errors": [],
   "passed": true,
   "evidence_bundle_sha256": "c1c721b35b05b5d4d2a637a996f8a5ef75671a5f77a18272697dae3461940817",
-  "renderer_sha256": "919751b1dc3a08d94b825e031740e5048c0275e8cfc22f5a28fd94704840e189"
+  "renderer_sha256": "f0cdf64b1479e4864516cb51a780cd46097d45719b35278f20bd47a29cb7e773"
 }
