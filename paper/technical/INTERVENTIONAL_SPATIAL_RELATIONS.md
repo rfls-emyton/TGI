@@ -221,6 +221,20 @@ only already tried actions returns `NO_UNTRIED_ACTION`; adding an untried
 action changes the available experiment, not past evidence. These controls
 bind the precise scope of the positive physical result.
 
+## Code and artifact availability
+
+The public TGI runtime and selected regression tests are available at
+https://github.com/rfls-emyton/TGI/tree/de95c4c and as the
+`tgi-foundation` version `0.2.0.dev0` distribution at
+https://pypi.org/project/tgi-foundation/0.2.0.dev0/. The GitHub commit fixes
+the code revision used for this publication series. Paths under `evidence/`,
+the historical `KONSEP.txt` and `HIPOTESIS` archive, and other unpublished
+workspace reports identify research provenance retained by the author; they
+are not files in the public GitHub repository or PyPI distribution. Results
+requiring those receipts are therefore identified by their archived source
+paths rather than presented as independently downloadable from the code
+release.
+
 ## References
 
 [1] `KONSEP.txt` and `contracts/M1_INTERVENTION_CORRESPONDENCE_RESEARCH_V1.md`.

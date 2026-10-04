@@ -8,10 +8,9 @@ They are not numbered branches of a taxonomy.
 The division follows **ownership of a mechanism and its falsifier**, as in the
 four NINMENI reference papers. Every manuscript has its own question,
 definitions, implementation boundary, validation method, result table,
-reproduction instructions, and references. The older
-[`TGI_FOUNDATION_DRAFT.md`](../TGI_FOUNDATION_DRAFT.md) is retained as an
-extensive chronology and evidence index. The numbered drafts under
-[`paper/series`](../series/README.md) are withdrawn editorial sketches.
+reproduction instructions, and references. The older foundation draft and
+numbered editorial sketches remain in the author's research archive; they
+are not part of this public paper series.
 
 | Manuscript | Owned mechanism | Decisive evidence |
 |---|---|---|
@@ -29,11 +28,15 @@ experience-owned organization, reversible knowledge decisions, and
 deterministic route resolution. `KONSEP.txt` and the HIPOTESIS archive are
 sources of goals and hypotheses, not blanket validation of every early formula.
 
-The four local NINMENI references are NMU, MULTIPITA, Emylton, and Crystal
-Memory in [`REFERENSI_NINMENI`](../../REFERENSI_NINMENI). They are research
-preprints; their paper architecture is the writing reference here. Claims in
-each TGI manuscript are tied to an explicit revision and evidence, while
-negative results remain visible. The six-paper package and its SHA-256 index
-are in [`publication/TGI_TECHNICAL_PAPERS_20261004`](../../publication/TGI_TECHNICAL_PAPERS_20261004/README_RELEASE.md).
-The complete evidence archive remains in
-[`publication/TGI_V1_20261004`](../../publication/TGI_V1_20261004/README_RELEASE.md).
+The four NINMENI reference preprints are
+[NMU](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341318),
+[MULTIPITA](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341819),
+[Emylton](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7345360), and
+[Crystal Memory](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7355679).
+Their paper architecture is the writing reference here. The public runtime
+is in [the TGI repository](https://github.com/rfls-emyton/TGI/tree/de95c4c)
+and [PyPI distribution 0.2.0.dev0](https://pypi.org/project/tgi-foundation/0.2.0.dev0/).
+Claims in each TGI manuscript are tied to an explicit revision and evidence,
+while negative results remain visible. Research receipts identified by local
+paths in the manuscripts remain in the author's archive and are not included
+in the public code distribution.

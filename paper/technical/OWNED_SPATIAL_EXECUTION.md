@@ -194,10 +194,24 @@ artifact needed to reproduce each number. This is the systems analogue
 of NINMENI's deposit-package practice: a paper explains the mechanism and
 result, while exact bytes and falsifiers remain inspectable.
 
+## Code and artifact availability
+
+The public TGI runtime and selected regression tests are available at
+https://github.com/rfls-emyton/TGI/tree/de95c4c and as the
+`tgi-foundation` version `0.2.0.dev0` distribution at
+https://pypi.org/project/tgi-foundation/0.2.0.dev0/. The GitHub commit fixes
+the code revision used for this publication series. Paths under `evidence/`,
+the historical `KONSEP.txt` and `HIPOTESIS` archive, and other unpublished
+workspace reports identify research provenance retained by the author; they
+are not files in the public GitHub repository or PyPI distribution. Results
+requiring those receipts are therefore identified by their archived source
+paths rather than presented as independently downloadable from the code
+release.
+
 ## References
 
 [1] E. Leunufna, *MULTIPITA: Band-Owned Iso-Budget Computation*, revision V3,
-2026, `REFERENSI_NINMENI/MULTIPITA_Band-Owned_Iso-Budget_Revision_V3.pdf`.
+2026, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341819.
 
 [2] `evidence/spatial_temporal_action_v10_profile_20261004/terminal_receipt.json`.
 

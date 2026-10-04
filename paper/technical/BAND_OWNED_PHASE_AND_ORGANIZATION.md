@@ -186,20 +186,34 @@ or organization, the old certificate cannot continue to authorize
 resolution. The actual query-level effect is checked by the separate
 resolution manuscript.
 
+## Code and artifact availability
+
+The public TGI runtime and selected regression tests are available at
+https://github.com/rfls-emyton/TGI/tree/de95c4c and as the
+`tgi-foundation` version `0.2.0.dev0` distribution at
+https://pypi.org/project/tgi-foundation/0.2.0.dev0/. The GitHub commit fixes
+the code revision used for this publication series. Paths under `evidence/`,
+the historical `KONSEP.txt` and `HIPOTESIS` archive, and other unpublished
+workspace reports identify research provenance retained by the author; they
+are not files in the public GitHub repository or PyPI distribution. Results
+requiring those receipts are therefore identified by their archived source
+paths rather than presented as independently downloadable from the code
+release.
+
 ## References
 
 [1] E. Leunufna, *NMU: One Character, One Identity*, revision V2, 2026,
-`REFERENSI_NINMENI/NMU_One_Character_One_Identity_Revision_V2.pdf`.
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341318.
 
 [2] E. Leunufna, *MULTIPITA: Band-Owned Iso-Budget Computation*, revision V3,
-2026, `REFERENSI_NINMENI/MULTIPITA_Band-Owned_Iso-Budget_Revision_V3.pdf`.
+2026, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7341819.
 
 [3] E. Leunufna, *Emylton: A Falsifiable Native Crystallization-State Chain*,
-revision V2, 2026, `REFERENSI_NINMENI/EMYLTON_Organization_Ownership_Revision_V2.pdf`.
+revision V2, 2026, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7345360.
 
 [4] E. Leunufna, *Crystal Memory for Native Character-Identity Streams*,
 revision V3, 2026,
-`REFERENSI_NINMENI/CRYSTAL_MEMORY_Rangkaian_Aksi_Kristal_V3_Revision.pdf`.
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7355679.
 
 [5] `KONSEP.txt`.
 
