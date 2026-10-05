@@ -10,6 +10,8 @@ Python >=3.11. Run repository tests with
 `python -m unittest discover -s tests -q`. The foundation CLI is available
 with `python -m tgi --help`. The foundational and five technical papers are
 listed in `paper/technical/README.md`.
+The [version map](paper/technical/POST_SUBMISSION_VERSION_MAP.md) relates the
+submitted paper revision to later public M2 package releases.
 
 The PyPI distribution is built from the explicit 45-module list in
 `publication/TGI_M2_PUBLIC_MODULE_ALLOWLIST_V1.json`. To reproduce a local

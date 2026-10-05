@@ -40,3 +40,7 @@ Claims in each TGI manuscript are tied to an explicit revision and evidence,
 while negative results remain visible. Research receipts identified by local
 paths in the manuscripts remain in the author's archive and are not included
 in the public code distribution.
+
+For code released after the manuscript revision, see the
+[post-submission version map](POST_SUBMISSION_VERSION_MAP.md). It keeps the
+submitted paper revision distinct from later M2 operators and package builds.
