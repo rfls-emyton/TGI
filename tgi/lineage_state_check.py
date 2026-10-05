@@ -1,5 +1,4 @@
 """Independent complete observed-state, operation and native lineage check."""
-from copy import deepcopy
 from .identity import decode,encode
 from .frame_engine import canonical
 from .organization_snapshot import snapshot
@@ -15,10 +14,10 @@ def verify_lineage_state(old,bridge,new,root_port,anchor,actions,certificate,*,m
             if not isinstance(anchor,dict) or set(anchor)!={'source','frame'} or not isinstance(anchor['source'],str) or type(anchor['frame']) is not int or anchor['frame'] not in (0,2):return False
             if not isinstance(actions,(list,tuple)) or not actions or any(not isinstance(a,str) or not a for a in actions):return False
             for action in actions:encode(action)
-            c=deepcopy(certificate)
+            c=certificate
             if set(c)!={'policy','root_port','anchor','actions','lineage','port','states','inventory','result'} or c['policy']!='lineage_observed_state_v1' or c['root_port']!=root_port or canonical(c['anchor'])!=canonical(anchor) or canonical(c['actions'])!=canonical(list(actions)):return False
             if not verify_intervention_continuity(old,bridge,new,root_port,c['lineage']):return False
-            view=snapshot(new[0]);groups=new[1];lookup={(r['source'],r['frame']):deepcopy(r) for r in new[2]}
+            view=snapshot(new[0]);groups=new[1];lookup={(r['source'],r['frame']):r for r in new[2]}
             assignment={s['source']:s['port'] for group in groups for s in group}
             port=assignment[anchor['source']]
             def endpoint(source,frame):

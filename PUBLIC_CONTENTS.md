@@ -1,5 +1,15 @@
 # Public repository inventory
 
-Included: 247 runtime Python modules; two selected regression modules; one acceptance contract JSON; one raw example JSONL; six paper sources and PDFs; package metadata, README, and license.
+Included: 257 public runtime Python modules, six selected regression modules,
+one acceptance contract JSON, one raw example JSONL, six paper sources and
+PDFs, a 45-module M2 package allowlist, a local public-package builder,
+package metadata, README, and license.
 
-Excluded: HIPOTESIS documents, NINMENI reference PDFs, historical/raw evidence, checkpoints, research scratch trees, local absolute paths, and credentials. The published source distribution and evidence bundle remain separately hash-bound release assets.
+The minimal M2 wheel and sdist stage only those 45 transitive runtime modules,
+README, license, and build metadata. They do not contain the repository's
+paper PDFs, tests, examples, historical/raw evidence, or hypotheses.
+
+Excluded from the repository: HIPOTESIS documents, NINMENI reference PDFs,
+historical/raw evidence, checkpoints, research scratch trees, local absolute
+paths, and credentials. Published source distributions and evidence bundles
+remain separately hash-bound release assets.

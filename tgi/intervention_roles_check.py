@@ -1,5 +1,4 @@
 """Independent source/cell/complete-partition verifier for visible roles."""
-from copy import deepcopy
 from .identity import decode,encode
 from .organization import OMEGA_CRIT
 from .organization_snapshot import snapshot
@@ -17,7 +16,7 @@ def verify_intervention_roles(acquisition,groups,measurements,certificate,*,max_
             fields={'policy','groups','witness','ports','rows','changed_before_diversity','partitions','completions','role_candidates','status'}
             c=certificate
             if set(c)!=fields or c['policy']!='visible_intervention_roles_v1' or canonical(c['groups'])!=canonical(groups):return False
-            view=snapshot(acquisition);groups=deepcopy(groups);measurements=deepcopy(measurements)
+            view=snapshot(acquisition)
             if not verify_acquisition_witness(view,measurements,c['witness']):return False
             if not isinstance(groups,list) or not groups:return False
             measured={};expected={(s,i) for s,(frames,_) in view.episodes.items() for i in range(len(frames))}

@@ -1,5 +1,4 @@
 """Independent complete epoch/bridge role-lineage outcome verification."""
-from copy import deepcopy
 from .frame_engine import canonical
 from .organization_snapshot import snapshot
 from .intervention_roles_check import verify_intervention_roles
@@ -12,14 +11,14 @@ def verify_intervention_continuity(old,bridge,new,root_port,certificate,*,max_se
     with budget.scope():
         budget.consume()
         try:
-            c=deepcopy(certificate)
+            c=certificate
             if set(c)!={'policy','root_port','epochs','outcomes','total_completions','result'} or c['policy']!='bridged_intervention_role_continuity_v1' or c['root_port']!=root_port:return False
             if not isinstance(c['epochs'],list) or len(c['epochs'])!=3:return False
             epochs=c['epochs']
             for raw,role in zip((old,bridge,new),epochs):
                 if raw is None:
                     if role is not None:return False
-                elif not isinstance(raw,(tuple,list)) or len(raw)!=3 or not verify_intervention_roles(snapshot(raw[0]),deepcopy(raw[1]),deepcopy(raw[2]),role):return False
+                elif not isinstance(raw,(tuple,list)) or len(raw)!=3 or not verify_intervention_roles(snapshot(raw[0]),raw[1],raw[2],role):return False
             left,middle,right=epochs
             if left is None or right is None or root_port not in left['ports']:return False
             li=left['ports'].index(root_port);bi=middle['ports'].index(root_port) if middle and root_port in middle['ports'] else None
