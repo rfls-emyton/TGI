@@ -14,7 +14,7 @@ listed in `paper/technical/README.md`.
 The PyPI distribution is built from the explicit 45-module list in
 `publication/TGI_M2_PUBLIC_MODULE_ALLOWLIST_V1.json`. To reproduce a local
 package from this checkout, run
-`python tools/build_public_m2.py --output ../tgi-m2-package --version 0.2.0.dev11`
+`python tools/build_public_m2.py --output ../tgi-m2-package --version 0.2.0.dev12`
 with a fresh output directory. The six paper PDFs and repository examples are
 separate from that minimal distribution. Raw research evidence, historical
 hypotheses, checkpoints, and credentials are outside this public code tree.

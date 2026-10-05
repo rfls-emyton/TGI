@@ -129,9 +129,14 @@ def certify_source_bound_endpoint_transport(old, bridge, new, root_port,
     for index, action in enumerate(actions):
         classes = action_roles[index]
         if not classes or not any(port in members for members in classes):
-            step = {'before': current, 'action': action, 'status': 'NO_ROLE',
+            direct = [row for row in observations[port]
+                      if row['before'] == current and row['action'] == action]
+            opposed = len({row['after'] for row in direct}) > 1
+            step = {'before': current, 'action': action,
+                    'status': 'OBSERVED_CONFLICT' if opposed else 'NO_ROLE',
                     'mode': None, 'output': [], 'suffix_nmu': [],
-                    'source_ids': [], 'lineage': []}
+                    'source_ids': sorted(row['source'] for row in direct) if opposed else [],
+                    'lineage': []}
         else:
             decision = _step(observations[port], current, action)
             step = {'before': current, 'action': action, **decision,

@@ -123,6 +123,12 @@ def verify_source_bound_endpoint_transport(old, bridge, new, root_port,
                         suffix = list(candidate)
                         sources = sorted(row[0] for row in matched)
                         break
+            else:
+                direct = [row for row in observations[port]
+                          if row[1] == current and row[2] == action]
+                if len({row[3] for row in direct}) > 1:
+                    status = 'OBSERVED_CONFLICT'
+                    sources = sorted(row[0] for row in direct)
             lineage = []
             if status == 'RESOLVED':
                 lineage = [dict(owner) for owner in owners]

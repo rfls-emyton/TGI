@@ -7,7 +7,7 @@ from tgi.source_bound_endpoint_transport import certify_source_bound_endpoint_tr
 from tgi.source_bound_endpoint_transport_check import verify_source_bound_endpoint_transport
 
 
-def endpoint_system(bridge_count=2):
+def endpoint_system(bridge_count=2, direct_conflict=False):
     seeds=('🧊','水水','🌋🌋🌋')
     actions=('α','ββ','γ')
     experiences=[('◆',action,'control') for action in actions]
@@ -20,9 +20,11 @@ def endpoint_system(bridge_count=2):
              ('old-a','old-b','new-b','new-a','old-control','new-control'),
              ('new-b','new-a','new-control'))
     epochs=[]
-    for names in layouts:
+    for epoch_index,names in enumerate(layouts):
         model=RawOrganization();groups=[];measurements=[]
-        for group_index,(seed,action,mode) in enumerate(experiences):
+        epoch_experiences=(experiences+[(seeds[2],actions[1],'conflict')]
+                           if direct_conflict and epoch_index==2 else experiences)
+        for group_index,(seed,action,mode) in enumerate(epoch_experiences):
             group=[]
             for position,port in enumerate(names):
                 role='first' if port.endswith('-a') else 'second' if port.endswith('-b') else 'control'
@@ -43,11 +45,22 @@ def endpoint_system(bridge_count=2):
                         'lower':moment,'upper':moment})
             groups.append(group)
         model.form();epochs.append((model,groups,measurements))
-    anchor={'source':f'{len(experiences)-1}:1','frame':2}
+    anchor={'source':f'{len(experiences)-1+int(direct_conflict)}:1','frame':2}
     return epochs,anchor
 
 
 class PublicM2WheelSmokeTests(unittest.TestCase):
+    def test_revoked_role_reports_exact_direct_conflict(self):
+        epochs,anchor=endpoint_system(direct_conflict=True)
+        c=certify_source_bound_endpoint_transport(
+            *epochs,'old-a',anchor,['ββ'])
+        self.assertEqual(c['result']['status'],'OBSERVATION_CONTRADICTION')
+        self.assertEqual(c['steps'][0]['status'],'OBSERVED_CONFLICT')
+        self.assertEqual(c['result']['output'],[])
+        self.assertEqual(len(c['steps'][0]['source_ids']),2)
+        self.assertTrue(verify_source_bound_endpoint_transport(
+            *epochs,'old-a',anchor,['ββ'],c))
+
     def test_endpoint_heldout_and_null_with_package_only(self):
         for count,expected in ((2,['🌋🌋🌋αββ']),(1,[])):
             epochs,anchor=endpoint_system(count)
