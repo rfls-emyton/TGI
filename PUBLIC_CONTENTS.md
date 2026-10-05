@@ -1,7 +1,7 @@
 # Public repository inventory
 
-Included: 257 public runtime Python modules, six selected regression modules,
-one acceptance contract JSON, one M2 conflict contract, one raw example JSONL, six paper sources and
+Included: 257 public runtime Python modules, seven selected regression modules and one frozen verifier reference,
+one acceptance contract JSON, two M2 mechanism contracts, one raw example JSONL, six paper sources and
 PDFs, a 45-module M2 package allowlist, a local public-package builder,
 package metadata, README, and license.
 

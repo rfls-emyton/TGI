@@ -7,19 +7,6 @@ from .organization import OMEGA_CRIT
 REVISION = 'TGI-M1-CAUSAL-PORT-TOPOLOGY-V1'
 
 
-def _add_source(stats, row, members, names):
-    """Accumulate one raw C/L witness for a fixed live port class."""
-    action = tuple(row['action_nmu'])
-    ports = row['ports']
-    if all(ports[name]['changed'] for name in members):
-        context = tuple(tuple(ports[name]['before_nmu']) for name in members)
-        stats['support'].setdefault(action, set()).add(context)
-    if all(not ports[name]['changed'] for name in members):
-        stats['controls'][action] = stats['controls'].get(action, 0) + 1
-        if any(ports[name]['changed'] for name in names if name not in members):
-            stats['separating'].add(action)
-
-
 def verify(events, certificate, *, revision=REVISION, valid_row=valid_contrast):
     try:
         if type(events) is not list or type(certificate) is not dict or \
@@ -32,7 +19,6 @@ def verify(events, certificate, *, revision=REVISION, valid_row=valid_contrast):
         sources = set()
         prior = None
         epoch = 0
-        traces, actions, cache = {}, set(), {}
         final = {'status': 'NO_PATH', 'action_nmu': None, 'members': None}
         for stop, event in enumerate(events):
             if type(event) is not dict or set(event) != {'source', 'action_nmu', 'ports'} or \
@@ -50,32 +36,35 @@ def verify(events, certificate, *, revision=REVISION, valid_row=valid_contrast):
                 return False
             if names is None:
                 names = observed
-                traces = {name: [] for name in names}
             if observed != names:
                 return False
-            actions.add(tuple(event['action_nmu']))
+            prefix = events[:stop+1]
             partition = {}
             for name in names:
-                traces[name].append(event['ports'][name]['kind'])
-                signature = tuple(traces[name])
+                signature = tuple(row['ports'][name]['kind'] for row in prefix)
                 partition.setdefault(signature, []).append(name)
             groups = sorted(tuple(members) for members in partition.values())
+            actions = sorted({tuple(row['action_nmu']) for row in prefix})
             cells, winners = [], []
             for members in groups:
-                key = (epoch, members)
-                stats = cache.get(key)
-                if stats is None:
-                    stats = {'stop': epoch - 1, 'support': {},
-                             'controls': {}, 'separating': set()}
-                    cache[key] = stats
-                for position in range(stats['stop'] + 1, stop + 1):
-                    _add_source(stats, events[position], members, names)
-                stats['stop'] = stop
                 counts = []
-                for action in sorted(actions):
-                    comparator = any(other != action for other in stats['separating'])
-                    omega = len(stats['support'].get(action, ()))
-                    controls = stats['controls'].get(action, 0)
+                for action in actions:
+                    support = set()
+                    controls = 0
+                    separating_actions = set()
+                    for row in events[epoch:stop+1]:
+                        raw_action = tuple(row['action_nmu'])
+                        all_changed = all(row['ports'][name]['changed'] for name in members)
+                        all_stable = all(not row['ports'][name]['changed'] for name in members)
+                        if all_changed and raw_action == action:
+                            support.add(tuple(tuple(row['ports'][name]['before_nmu']) for name in members))
+                        if all_stable:
+                            if raw_action == action:
+                                controls += 1
+                            if any(row['ports'][name]['changed'] for name in names if name not in members):
+                                separating_actions.add(raw_action)
+                    comparator = any(other != action for other in separating_actions)
+                    omega = len(support)
                     counts.append({'action_nmu': list(action), 'omega': omega,
                                    'controls': controls, 'comparator': comparator})
                     if omega >= OMEGA_CRIT and controls and comparator:
@@ -85,7 +74,6 @@ def verify(events, certificate, *, revision=REVISION, valid_row=valid_contrast):
                 final = {'status': 'REVOKED', 'action_nmu': None, 'members': None}
                 prior = None
                 epoch = stop+1
-                cache = {}
             elif len(winners) == 1:
                 action, members = winners[0]
                 final = {'status': 'CRYSTAL', 'action_nmu': list(action), 'members': list(members)}
