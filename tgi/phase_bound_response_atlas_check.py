@@ -17,9 +17,9 @@ def verify(events, certificate):
         previous_keys, previous_births, previous_roles = set(), {}, set()
         expected_phases = []
         names = None
+        prepared = []
         for index in range(len(events)):
-            prefix = events[:index+1]
-            row = prefix[-1]
+            row = events[index]
             if type(row) is not dict or set(row) != {'source', 'action', 'ports'}:
                 return False
             current_names = sorted(row['ports'])
@@ -27,15 +27,18 @@ def verify(events, certificate):
                 names = current_names
             if current_names != names or len(names) < 3:
                 return False
-            actions = sorted({tuple(encode(item['action'])) for item in prefix})
+            prepared.append({'action': tuple(encode(row['action'])),
+                             'before': {port: tuple(encode(row['ports'][port][0]))
+                                        for port in names},
+                             'changed': {port: row['ports'][port][0] != row['ports'][port][1]
+                                         for port in names}})
+            actions = sorted({item['action'] for item in prepared})
             current_keys, new_births, admitted, cells = set(), {}, set(), []
             for action in actions:
-                action_rows = [item for item in prefix
-                               if tuple(encode(item['action'])) == action]
+                action_rows = [item for item in prepared if item['action'] == action]
                 patterns = {}
                 for port in names:
-                    pattern = tuple(item['ports'][port][0] != item['ports'][port][1]
-                                    for item in action_rows)
+                    pattern = tuple(item['changed'][port] for item in action_rows)
                     patterns.setdefault(pattern, []).append(port)
                 for members in sorted(tuple(ports) for ports in patterns.values()):
                     key = (action, members)
@@ -45,14 +48,11 @@ def verify(events, certificate):
                     c_contexts, all_c, l_contexts = set(), set(), set()
                     l_events = 0
                     other_action = False
-                    for position, item in enumerate(prefix):
-                        candidate_action = tuple(encode(item['action']))
-                        context = tuple(tuple(encode(item['ports'][port][0]))
-                                        for port in members)
-                        c = all(item['ports'][port][0] != item['ports'][port][1]
-                                for port in members)
-                        l = all(item['ports'][port][0] == item['ports'][port][1]
-                                for port in members)
+                    for position, item in enumerate(prepared):
+                        candidate_action = item['action']
+                        context = tuple(item['before'][port] for port in members)
+                        c = all(item['changed'][port] for port in members)
+                        l = all(not item['changed'][port] for port in members)
                         if candidate_action == action:
                             if c:
                                 all_c.add(context)
@@ -61,7 +61,7 @@ def verify(events, certificate):
                             if l:
                                 l_contexts.add(context)
                                 l_events += 1
-                        elif l and any(item['ports'][port][0] != item['ports'][port][1]
+                        elif l and any(item['changed'][port]
                                        for port in names if port not in members):
                             other_action = True
                     opposed = bool(all_c & l_contexts)

@@ -52,7 +52,7 @@ def closure():
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--output',required=True,type=Path)
-    parser.add_argument('--version',default='0.2.0.dev10')
+    parser.add_argument('--version',default='0.2.0.dev11')
     args=parser.parse_args()
     output=args.output.resolve()
     if output.exists() or output.is_relative_to(ROOT):
