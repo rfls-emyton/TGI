@@ -7,11 +7,16 @@ from pathlib import Path
 
 from tgi.causal_port_classes import _event, form
 from tgi.causal_port_classes_check import verify
+from tgi.frame_engine import canonical
 
 REFERENCE = Path(__file__).with_name('reference_causal_port_classes_check_v1.py')
 SPEC = importlib.util.spec_from_file_location('tgi._reference_causal_port_classes_check_v1', REFERENCE)
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
+FORM_REFERENCE = Path(__file__).with_name('reference_causal_port_classes_form_v1.py')
+FORM_SPEC = importlib.util.spec_from_file_location('tgi._reference_causal_port_classes_form_v1', FORM_REFERENCE)
+FORM_MODULE = importlib.util.module_from_spec(FORM_SPEC)
+FORM_SPEC.loader.exec_module(FORM_MODULE)
 
 
 class IncrementalCheckerParityTests(unittest.TestCase):
@@ -30,6 +35,8 @@ class IncrementalCheckerParityTests(unittest.TestCase):
                     ports[name] = (before, before + 'x' if rng.getrandbits(1) else before)
                 events.append(_event(f'{trial}:{index}', action, ports))
             certificate = form(events)
+            self.assertEqual(canonical(certificate),
+                             canonical(FORM_MODULE.form(events)), trial)
             self.assertTrue(MODULE.verify(events, certificate), trial)
             self.assertTrue(verify(events, certificate), trial)
             forged = copy.deepcopy(certificate)

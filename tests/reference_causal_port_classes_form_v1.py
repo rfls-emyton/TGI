@@ -31,17 +31,22 @@ def _event(source, action, ports):
     return {'source': source, 'action_nmu': list(encode(action)), 'ports': observed}
 
 
-def _accrue(stats, event, members, names):
-    """Add one original C/L experience to an unchanged live class."""
-    action = tuple(event['action_nmu'])
-    ports = event['ports']
-    if all(ports[name]['kind'] != 'STABLE' for name in members):
-        context = tuple(tuple(ports[name]['before_nmu']) for name in members)
-        stats['contexts'].setdefault(action, set()).add(context)
-    if all(ports[name]['kind'] == 'STABLE' for name in members):
-        stats['controls'][action] = stats['controls'].get(action, 0) + 1
-        if any(ports[name]['kind'] != 'STABLE' for name in names if name not in members):
-            stats['comparators'].add(action)
+def _evidence(events, members, names, action):
+    contexts = set()
+    controls = 0
+    comparators = set()
+    for event in events:
+        key = tuple(event['action_nmu'])
+        changed = all(event['ports'][name]['kind'] != 'STABLE' for name in members)
+        stable = all(event['ports'][name]['kind'] == 'STABLE' for name in members)
+        if changed and key == action:
+            contexts.add(tuple(tuple(event['ports'][name]['before_nmu']) for name in members))
+        if stable:
+            if key == action:
+                controls += 1
+            if any(event['ports'][name]['kind'] != 'STABLE' for name in names if name not in members):
+                comparators.add(key)
+    return len(contexts), controls, any(other != action for other in comparators)
 
 
 def form(events, *, revision=REVISION, valid_row=None):
@@ -51,7 +56,7 @@ def form(events, *, revision=REVISION, valid_row=None):
     if valid_row is None:
         valid_row = valid_contrast
     traces, phases, names, seen, actions = {}, [], None, set(), set()
-    prior, epoch, cache = None, 0, {}
+    prior, epoch = None, 0
     for index, event in enumerate(events):
         if type(event) is not dict or set(event) != {'source', 'action_nmu', 'ports'} or \
                 type(event['source']) is not str or not event['source'] or event['source'] in seen or \
@@ -77,20 +82,9 @@ def form(events, *, revision=REVISION, valid_row=None):
         groups = sorted(tuple(members) for members in grouped.values())
         cells, winners = [], []
         for members in groups:
-            key = (epoch, members)
-            stats = cache.get(key)
-            if stats is None:
-                stats = {'stop': epoch - 1, 'contexts': {},
-                         'controls': {}, 'comparators': set()}
-                cache[key] = stats
-            for position in range(stats['stop'] + 1, index + 1):
-                _accrue(stats, events[position], members, names)
-            stats['stop'] = index
             counts = []
             for action in sorted(actions):
-                omega = len(stats['contexts'].get(action, ()))
-                controls = stats['controls'].get(action, 0)
-                comparator = any(other != action for other in stats['comparators'])
+                omega, controls, comparator = _evidence(events[epoch:index+1], members, names, action)
                 counts.append({'action_nmu': list(action), 'omega': omega,
                                'controls': controls, 'comparator': comparator})
                 if omega >= OMEGA_CRIT and controls and comparator:
@@ -99,7 +93,6 @@ def form(events, *, revision=REVISION, valid_row=None):
         if prior is not None and prior not in groups:
             result = {'status': 'REVOKED', 'action_nmu': None, 'members': None}
             prior, epoch = None, index + 1
-            cache = {}
         elif len(winners) == 1:
             action, members = winners[0]
             result = {'status': 'CRYSTAL', 'action_nmu': list(action), 'members': list(members)}
