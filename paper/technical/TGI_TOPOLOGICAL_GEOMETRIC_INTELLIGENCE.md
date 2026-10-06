@@ -4,7 +4,7 @@ Emylton Leunufna
 
 Independent researcher (no institutional affiliation)
 
-6 October 2026
+4 October 2026
 
 ## Abstract
 

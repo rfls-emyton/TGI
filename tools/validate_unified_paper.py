@@ -24,6 +24,8 @@ def main():
         raise ValueError('Exactly one active title required')
     if source.count('## Abstract\n') != 1 or source.count('## References\n') != 1:
         raise ValueError('One abstract and bibliography required')
+    if source.count('\n4 October 2026\n') != 1:
+        raise ValueError('Original paper date must be 4 October 2026')
     for term in ('KONSEP.txt', 'FOUNDATION_DRAFT', 'HIPOTESIS',
                  '## References\n\n[', 'companion paper'):
         if term in source or term in extracted:
@@ -35,7 +37,8 @@ def main():
            f'abstract_id={record}' not in extracted for record in records):
         raise ValueError('Bibliography record missing or duplicated')
     result = {
-        'revision': 'TGI-UNIFIED-ARTICLE-20261006',
+        'revision': 'TGI-UNIFIED-ARTICLE-20261004',
+        'paper_date': '2026-10-04',
         'title': 'TGI: Topological Geometric Intelligence',
         'author': 'Emylton Leunufna',
         'source_sha256': digest(PAPER),

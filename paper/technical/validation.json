@@ -1,9 +1,10 @@
 {
-  "revision": "TGI-UNIFIED-ARTICLE-20261006",
+  "revision": "TGI-UNIFIED-ARTICLE-20261004",
+  "paper_date": "2026-10-04",
   "title": "TGI: Topological Geometric Intelligence",
   "author": "Emylton Leunufna",
-  "source_sha256": "3875acef23728864fc4537a7544c1341ec3b08281318250a6fed9b9cf37bc2f3",
-  "pdf_sha256": "177e6dc050a9305d94eee16cbcaa115b20e4b9b9d4435a9db615e831007840d5",
+  "source_sha256": "5ebf0471993bc967a2c73e48808a0f16993c2488583132edc32aba5571ce600d",
+  "pdf_sha256": "c32be6c9a413c5d7b2d6ccf12c1b9300e274bb4e319de950caa780abb6cb4005",
   "pages": 12,
   "source_words": 7706,
   "scientific_references": 4,
